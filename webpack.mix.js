@@ -63,6 +63,27 @@ mix
   .js(`${devPath}/js/block.js`, `${distPath}/js`)
   .react();
 
+// Sass configuration.
+var sassConfig = { sassOptions: {
+  outputStyle: 'compressed',
+  indentType: 'tab',
+  indentWidth: 1
+} };
+
+// Compile SASS/CSS.
+mix
+  .sass(`${devPath}/scss/block.scss`, `${distPath}/css`, sassConfig).options({
+  postCss: [
+      require('cssnano')({
+          preset: ['default', {
+              discardComments: {
+                  removeAll: true,
+              },
+          }]
+      })
+  ]
+});
+
 /*
  * Add custom Webpack configuration.
  *

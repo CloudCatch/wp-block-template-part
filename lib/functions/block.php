@@ -25,6 +25,15 @@ function register_block() {
 		true
 	);
 
+	\wp_localize_script(
+		'wp-block-template-part',
+		'wpbtp',
+		array(
+			'templateParts'       => get_template_parts(),
+			'defaultTemplatePart' => apply_filters( 'wp_block_template_part_default', '' ),
+		)
+	);
+
 	\register_block_type_from_metadata(
 		WP_BLOCK_TEMPLATE_PART_DIR . '/lib/config',
 		array(
@@ -34,6 +43,40 @@ function register_block() {
 	);
 }
 \add_action( 'init', __NAMESPACE__ . '\register_block' );
+
+/**
+ * Get template parts
+ *
+ * @return array
+ */
+function get_template_parts() {
+	$files = (array) wp_get_theme()->get_files( 'php', 2, true );
+
+	foreach ( $files as $file => $full_path ) {
+		$file = str_replace( '.php', '', $file );
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions
+		if ( preg_match( '|Template Part:(.*)$|mi', file_get_contents( $full_path ), $header ) ) {
+			$template_parts[] = array(
+				'name' => _cleanup_header_comment( $header[1] ),
+				'slug' => $file,
+			);
+
+			continue;
+		}
+
+		if ( strpos( $file, 'template-parts/' ) === 0 ) {
+			$template_parts[] = array(
+				'name' => $file,
+				'slug' => $file,
+			);
+		}
+	}
+
+	$template_parts = apply_filters( 'wp_block_template_part_parts', $template_parts, $files );
+
+	return $template_parts;
+}
 
 /**
  * Renders the post template part on the server.
@@ -48,7 +91,13 @@ function render_block_template_part( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$content = get_template_part( $block->context['postId'] );
+	$template_part = $attributes['templatePart'] ?? '';
+
+	if ( ! $template_part ) {
+		$template_part = apply_filters( 'wp_block_template_part_default', '' );
+	}
+
+	$content = get_template_part( $block->context['postId'], $template_part );
 
 	\wp_reset_postdata();
 

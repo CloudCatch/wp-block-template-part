@@ -10,6 +10,9 @@
 	"attributes": {
 		"postId": {
 			"type": "string"
+		},
+		"templatePart": {
+			"type": "string"
 		}
 	},
 	"supports": {
@@ -17,5 +20,6 @@
 		"html": false,
 		"align": true
 	},
-	"editorScript": "wp-block-template-part"
+	"editorScript": "wp-block-template-part",
+	"editorStyle": "file:../../assets/css/block.css"
 }
