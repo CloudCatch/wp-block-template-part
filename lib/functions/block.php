@@ -87,7 +87,15 @@ function get_template_parts() {
  * @return string  Returns the template part for the given post.
  */
 function render_block_template_part( $attributes, $content, $block ) {
-	if ( ! isset( $block->context['postId'] ) ) {
+	$is_block_editor = defined( 'REST_REQUEST' ) && true === REST_REQUEST && isset( $_GET['context'] ) && 'edit' === sanitize_key( $_GET['context'] );
+
+	if ( $is_block_editor ) {
+		$post_id = absint( $_GET['postId'] ?? null );
+	} else {
+		$post_id = absint( $block->context['postId'] ?? null );
+	}
+
+	if ( ! $post_id ) {
 		return '';
 	}
 
@@ -97,7 +105,7 @@ function render_block_template_part( $attributes, $content, $block ) {
 		$template_part = apply_filters( 'wp_block_template_part_default', '' );
 	}
 
-	$content = get_template_part( $block->context['postId'], $template_part );
+	$content = get_template_part( $post_id, $template_part );
 
 	\wp_reset_postdata();
 

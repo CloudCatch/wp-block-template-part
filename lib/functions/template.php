@@ -19,8 +19,8 @@ namespace SeattleWebCo\WpBlockTemplatePart\Functions;
  * @return string
  */
 function get_template_part( $post, $template_part = '' ) {
-	$content = '';
-	$post    = \get_post( $post );
+	$content         = '';
+	$GLOBALS['post'] = \get_post( $post ); // phpcs:ignore
 
 	$template_part = $template_part ?: 'template-parts/content-' . $post->post_type;
 
@@ -29,6 +29,8 @@ function get_template_part( $post, $template_part = '' ) {
 	\get_template_part( \apply_filters( 'wp_block_template_part', str_replace( '.php', '', $template_part ), $post ) );
 
 	$has_template_part = ob_get_clean();
+
+	\wp_reset_postdata();
 
 	if ( $has_template_part ) {
 		$content = $has_template_part;

@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "swc/template-part",
+	"name": "wpbtp/template-part",
 	"title": "Template Part",
 	"category": "design",
 	"parent": [ "core/post-template" ],
@@ -20,6 +20,5 @@
 		"html": false,
 		"align": true
 	},
-	"editorScript": "wp-block-template-part",
-	"editorStyle": "file:../../assets/css/block.css"
+	"editorScript": "wp-block-template-part"
 }

@@ -60,8 +60,8 @@ function rest_route_template_parts_part( $request ) {
 	$template_part = $request->get_param( 'template_part' );
 	$object_id     = $request->get_param( 'id' );
 
-	$content = '';
-	$post    = \get_post( $object_id );
+	$content         = '';
+	$GLOBALS['post'] = \get_post( $object_id ); // phpcs:ignore
 
 	ob_start();
 

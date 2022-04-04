@@ -11,16 +11,28 @@ const {
 } = wp.components;
 
 const {__} = wp.i18n;
+
 const {
 	InspectorControls,
 	useBlockProps
 } = wp.blockEditor;
 
+const ServerSideRender = wp.serverSideRender;
+
 export default function TemplatePartEdit( props ) {
-	const { 
-		attributes: {templatePart}, 
+	const {
+		attributes,
 		setAttributes,
+		context
 	} = props;
+
+	const {
+		templatePart
+	} = attributes;
+
+	const {
+		postId
+	} = context;
 
 	const blockProps = useBlockProps();
 
@@ -53,7 +65,18 @@ export default function TemplatePartEdit( props ) {
 				</PanelBody>
 			</InspectorControls>
 			<div { ...blockProps }>
-				<p>{ __( 'Rendered template part unavailable in the editor' ) }</p>
+				{ ! templatePart && (
+					<p>
+						{ __( 'Please select a template part' ) }
+					</p>
+				) }
+				{ templatePart && (
+					<ServerSideRender
+						block="wpbtp/template-part"
+						attributes={ attributes }
+						urlQueryArgs={ {postId: postId} }
+					/>
+				) }
 			</div>
 		</>
 	);
