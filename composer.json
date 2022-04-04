@@ -1,16 +1,16 @@
 {
-  "name": "seattlewebco/wp-block-template-part",
+  "name": "cloudcatch/wp-block-template-part",
   "description": "Gutenberg block to render a template part inside a query loop",
   "type": "wordpress-plugin",
   "authors": [
     {
       "name": "David Jensen",
-      "email": "david@seattlewebco.com"
+      "email": "david@cloudcatch.io"
     }
   ],
   "autoload": {
     "psr-4": {
-      "SeattleWebCo\\WpBlockTemplatePart\\": "src"
+      "CloudCatch\\WpBlockTemplatePart\\": "src"
     }
   },
   "config": {

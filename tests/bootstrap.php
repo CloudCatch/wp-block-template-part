@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package SeattleWebCo\WpBlockTemplatePart
+ * @package CloudCatch\WpBlockTemplatePart
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -25,7 +25,7 @@ require_once $_tests_dir . '/includes/functions.php';
 function _manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/wp-block-template-part.php';
 
-	\SeattleWebCo\WpBlockTemplatePart\install();
+	\CloudCatch\WpBlockTemplatePart\install();
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

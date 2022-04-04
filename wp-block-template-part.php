@@ -1,19 +1,19 @@
 <?php
 /**
- * Plugin Name:     Template Part - Gutenberg Block
+ * Plugin Name:     Template Part Block
  * Description:     Gutenberg block to render a template part inside a query loop
  * Version:         0.0.0-development
- * Author:          Seattle Web Co.
- * Author URI:      https://seattlewebco.com
+ * Author:          CloudCatch
+ * Author URI:      https://cloudcatch.io
  * Text Domain:     wp-block-template-part
  * Domain Path:     /languages/
- * Contributors:    seattlewebco, dkjensen
+ * Contributors:    cloudcatch, cloudcatch, dkjensen
  * Requires PHP:    7.0.0
  *
- * @package SeattleWebCo\WpBlockTemplatePart
+ * @package CloudCatch\WpBlockTemplatePart
  */
 
-namespace SeattleWebCo\WpBlockTemplatePart;
+namespace CloudCatch\WpBlockTemplatePart;
 
 define( 'WP_BLOCK_TEMPLATE_PART_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'WP_BLOCK_TEMPLATE_PART_URL', \plugin_dir_url( __FILE__ ) );

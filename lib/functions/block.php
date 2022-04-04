@@ -2,14 +2,14 @@
 /**
  * Template Part - Gutenberg Block
  *
- * @package   SeattleWebCo\WpBlockTemplatePart
- * @link      https://seattlewebco.com
- * @author    Seattle Web Co.
- * @copyright Copyright © 2021 Seattle Web Co.
+ * @package   CloudCatch\WpBlockTemplatePart
+ * @link      https://cloudcatch.com
+ * @author    CloudCatch LLC
+ * @copyright Copyright © 2021 CloudCatch LLC
  * @license   GPL-3.0
  */
 
-namespace SeattleWebCo\WpBlockTemplatePart\Functions;
+namespace CloudCatch\WpBlockTemplatePart\Functions;
 
 /**
  * Register block and related scripts

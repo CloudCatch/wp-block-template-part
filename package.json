@@ -4,14 +4,14 @@
   "description": "Gutenberg block to render a template part inside a query loop",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seattlewebco/wp-block-template-part.git"
+    "url": "git+https://github.com/CloudCatch/wp-block-template-part.git"
   },
-  "author": "Seattle Web Co.",
+  "author": "CloudCatch LLC",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/seattlewebco/wp-block-template-part/issues"
+    "url": "https://github.com/CloudCatch/wp-block-template-part/issues"
   },
-  "homepage": "https://github.com/seattlewebco/wp-block-template-part#readme",
+  "homepage": "https://github.com/CloudCatch/wp-block-template-part#readme",
   "lint-staged": {
     "*.php": [
       "php -d display_errors=1 -l",
