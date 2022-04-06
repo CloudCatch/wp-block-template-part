@@ -20,7 +20,8 @@ namespace CloudCatch\WpBlockTemplatePart\Functions;
  */
 function get_template_part( $post, $template_part = '' ) {
 	$content         = '';
-	$GLOBALS['post'] = \get_post( $post ); // phpcs:ignore
+	$post            = \get_post( $post );
+	$GLOBALS['post'] = $post; // phpcs:ignore
 
 	$template_part = $template_part ?: 'template-parts/content-' . $post->post_type;
 
