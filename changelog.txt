@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CloudCatch/wp-block-template-part/compare/1.1.0...1.1.1) (2022-04-06)
+
+
+### Bug Fixes
+
+* global $post variable throwing notice ([ce8fd06](https://github.com/CloudCatch/wp-block-template-part/commit/ce8fd0687e6a2af3c55428a4bc7efa8b86f7aae9))
+
 # [1.1.0](https://github.com/CloudCatch/wp-block-template-part/compare/1.0.0...1.1.0) (2022-04-06)
 
 
