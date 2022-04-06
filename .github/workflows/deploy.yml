@@ -33,13 +33,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: WordPress Plugin Deploy
-      #   if: steps.semantic.outputs.new-release-published == 'true'
-      #   uses: 10up/action-wordpress-plugin-deploy@1.5.0
-      #   with:
-      #     generate-zip: true
-      #   env:
-      #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-      #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-      #     SLUG: wp-block-template-part
-      #     VERSION: ${{ steps.semantic.outputs.release-version }}
+      - name: WordPress Plugin Deploy
+        if: steps.semantic.outputs.new-release-published == 'true'
+        uses: 10up/action-wordpress-plugin-deploy@1.5.0
+        with:
+          generate-zip: true
+        env:
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SLUG: template-part-block
+          VERSION: ${{ steps.semantic.outputs.release-version }}
